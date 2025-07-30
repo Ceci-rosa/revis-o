@@ -1,65 +1,33 @@
-numero = int(input("Informe um número inteiro: "))
-if numero % 2 == 0:
-    print("O número informado é par!")
+# Programa para ler 5 números inteiros e exibir o maior e o menor
+numeros = []
+for i in range(5):
+    numero = int(input("Digite um número inteiro: "))
+    numeros.append(numero)
+print("Lista completa:", numeros)
+print("Maior valor:", max(numeros))
+print("Menor valor:", min(numeros))
 
-elif numero > 0:
-    print("O número é maior que zero!")
+tarefas = []
+while True:
+    tarefa = input("Digite uma tarefa (ou 'listar' para ver as tarefas): ")
+    if tarefa.lower() == "listar":
+        print("Tarefas cadastradas:", tarefas)
+        break
+    else:
+        tarefas.append(tarefa)
 
-else:
-    print("Onúmero informado é ímpar!")
+alunos = {}
+for _ in range(int(input("Quantos alunos deseja cadastrar? "))):
+    nome = input("Nome: ")
+    nota = float(input("Nota (0 a 10): "))
+    alunos[nome] = nota
+media = sum(alunos.values()) / len(alunos)
+print("Média:", media)
+print("Acima da média:", [nome for nome, nota in alunos.items() if nota > media])
 
-numero = 0
-
-while numero < 10:
-    print("Mostre o número: ", numero)
-    numero += 1
-
-print("Saiu da repetição")
-
-numero = 1
-
-while numero <= 100:
-    if numero % 2 == 0:
-        print(numero)
-    numero += 1
-
-for num in range(1, 101, 2):
-    print("Mostre o número: ", num)
-
-lista = []
-
-for numero in range(5):
-    numero = int(input("Informe um numero inteiros: "))
-    lista.append(numero)
-
-    print(lista)
-    for item in lista:
-        print(item)
-
-        
-filmes = {}
-nome = input("Informe o nome do filme: ")
-ano = int(input("Informe o ano do filme: "))
-filmes[nome] = ano
-
-print(filmes)
-
-for nome_filme, ano in filmes.items():
-    print("Nome do filme: ", nome_filme)
-    print("Ano de Lançamento: ", ano)
-
-nome_filme = input ("Informe o nome do filme que deseja buscar: ")
- 
-if nome_filme in filmes:
-    print("Filme encontrado!")
-
-else:
-    print("Filme não encontrado!")
-
-with open("teste_atividade.txt", "w") as arquivo:
-    arquivo.write("texto qualquer!!")
-
-
-with open ("teste_atividade.txt", "r") as arquivos:
-    conteudo = arquivo.read()
-    print(conteudo)
+produtos = {"maçã": 3.00, "banana": 2.50, "laranja": 4.00, "uva": 5.00, "pera": 6.00}
+while True:
+    produto = input("Produto (ou 'sair' para encerrar): ")
+    if produto == "sair":
+        break
+    print(f"Preço: R${produtos.get(produto, 'Produto não encontrado.'):.2f}")
